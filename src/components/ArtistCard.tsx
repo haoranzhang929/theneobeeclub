@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { FaSpotify, FaYoutube } from "react-icons/fa";
+import Image from "next/image";
 
 interface ArtistCardProps {
   name: string;
@@ -20,7 +21,7 @@ const ArtistCard = ({ name, role, spotify, youtube, bilibili, imageUrl }: Artist
       className="bg-gray-900 rounded-lg overflow-hidden shadow-xl"
     >
       <div className="relative h-64">
-        <img src={imageUrl} alt={name} className="w-full h-full object-cover" />
+        <Image src={imageUrl} alt={name} fill className="w-full h-full object-cover" />
       </div>
       <div className="p-6">
         <h3 className="text-xl font-bold mb-2">{name}</h3>

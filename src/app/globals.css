@@ -22,7 +22,6 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
 }
 
 h1,
@@ -32,7 +31,7 @@ h4,
 h5,
 h6,
 .font-display {
-  font-family: "Playfair Display", serif;
+  /* font-family: 'Playfair Display', serif; */
 }
 
 @keyframes gradient-move {
@@ -63,4 +62,8 @@ h6,
 }
 .animate-float-slow {
   animation: float 7s ease-in-out infinite;
+}
+
+.font-display {
+  font-family: var(--font-playfair), serif;
 }

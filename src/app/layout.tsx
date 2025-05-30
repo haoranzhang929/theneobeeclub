@@ -1,14 +1,20 @@
+import "../app/globals.css";
+import { Playfair_Display, Montserrat } from "next/font/google";
+
+const playfair = Playfair_Display({ subsets: ["latin"], weight: ["700"] });
+const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "700"] });
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <>
+    <html
+      lang="en"
+      className={`scroll-smooth ${montserrat.className}`}
+      style={{ "--font-playfair": playfair.style.fontFamily } as React.CSSProperties}
+    >
       <head>
         <link rel="icon" href="/favicon.png" type="image/png" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap"
-          rel="stylesheet"
-        />
       </head>
-      {children}
-    </>
+      <body className="bg-black text-white min-h-screen">{children}</body>
+    </html>
   );
 }

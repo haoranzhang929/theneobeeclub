@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import ArtistCard from "@/components/ArtistCard";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 export default function Home() {
   const t = useTranslations();
@@ -25,10 +26,13 @@ export default function Home() {
         >
           <picture>
             <source srcSet="/logo.webp" type="image/webp" />
-            <img
+            <Image
               src="/logo.png"
               alt="The NeoBee Club Logo"
+              width={192}
+              height={192}
               className="mx-auto mb-8 w-32 h-32 sm:w-48 sm:h-48 rounded-full object-cover shadow-lg"
+              priority
             />
           </picture>
           <h1 className="font-display text-3xl sm:text-5xl md:text-7xl font-bold mb-4">{t("hero.title")}</h1>
