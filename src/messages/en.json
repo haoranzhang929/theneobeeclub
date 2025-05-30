@@ -3,7 +3,8 @@
     "brand": "The NeoBee Club",
     "artists": "Artists",
     "music": "Music",
-    "contact": "Contact"
+    "contact": "Contact",
+    "works": "Our Works"
   },
   "hero": {
     "title": "The NeoBee Club",
@@ -20,7 +21,14 @@
     "leo_role": "Guitarist & DJ"
   },
   "music": {
-    "title": "Latest Music"
+    "title": "Latest Work"
+  },
+  "works": {
+    "title": "Our Works",
+    "funky_house_title": "Funky House Mix with Guitar",
+    "funky_house_description": "A soulful house mix with live guitar.",
+    "chill_jazzy_title": "Chill Jazzy Set",
+    "chill_jazzy_description": "A relaxing jazzy electronic set."
   },
   "contact": {
     "title": "Connect With Us"

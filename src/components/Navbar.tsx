@@ -41,6 +41,9 @@ const Navbar = () => {
               <Link href={`/${locale}/#music`} className="hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium">
                 {t("music")}
               </Link>
+              <Link href={`/${locale}/works`} className="hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium">
+                {t("works")}
+              </Link>
               <Link
                 href={`/${locale}/#contact`}
                 className="hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium"
@@ -83,6 +86,13 @@ const Navbar = () => {
               onClick={() => setMenuOpen(false)}
             >
               {t("music")}
+            </Link>
+            <Link
+              href={`/${locale}/works`}
+              className="block w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-gray-800"
+              onClick={() => setMenuOpen(false)}
+            >
+              {t("works")}
             </Link>
             <Link
               href={`/${locale}/#contact`}

@@ -3,7 +3,8 @@
     "brand": "The NeoBee Club",
     "artists": "艺术家",
     "music": "音乐",
-    "contact": "联系"
+    "contact": "联系",
+    "works": "作品"
   },
   "hero": {
     "title": "The NeoBee Club",
@@ -20,7 +21,14 @@
     "leo_role": "吉他手 & DJ"
   },
   "music": {
-    "title": "最新音乐"
+    "title": "最新作品"
+  },
+  "works": {
+    "title": "我们的作品",
+    "funky_house_title": "放克浩室吉他混音",
+    "funky_house_description": "充满灵魂感的浩室混音，配以现场吉他演奏。",
+    "chill_jazzy_title": "慵懒爵士套曲",
+    "chill_jazzy_description": "轻松惬意的爵士电子音乐。"
   },
   "contact": {
     "title": "联系我们"

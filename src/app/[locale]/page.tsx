@@ -4,6 +4,7 @@ import ArtistCard from "@/components/ArtistCard";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { works } from "@/data/works";
 
 export default function Home() {
   const t = useTranslations();
@@ -77,12 +78,12 @@ export default function Home() {
       {/* Music Section */}
       <section id="music" className="py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center mb-12">{t("music.title")}</h2>
+          <h2 className="font-display text-4xl font-bold text-center mb-12">{t("music.title")}</h2>
           <div className="aspect-video">
             <iframe
               className="w-full h-full rounded-lg"
-              src="https://www.youtube.com/embed/VIDEO_ID"
-              title="The NeoBee Club - Funky House Mix with Guitar"
+              src={works[0].src}
+              title={works[0].title}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />

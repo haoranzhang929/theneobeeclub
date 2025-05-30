@@ -17,13 +17,14 @@ export default async function LocaleLayout(props: { children: ReactNode; params:
   setRequestLocale(locale);
   if (!locales.includes(locale)) notFound();
   const messages = (await import(`../../messages/${locale}.json`)).default;
+
+  // Debug logs
+  console.log("Loaded locale:", locale);
+  console.log("Loaded messages:", messages);
+
   return (
-    <html lang={locale} className="scroll-smooth">
-      <body className="bg-black text-white min-h-screen">
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          {children}
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      {children}
+    </NextIntlClientProvider>
   );
 }
