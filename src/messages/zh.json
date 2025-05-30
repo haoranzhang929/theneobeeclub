@@ -1,0 +1,28 @@
+{
+  "navbar": {
+    "brand": "The NeoBee Club",
+    "artists": "艺术家",
+    "music": "音乐",
+    "contact": "联系"
+  },
+  "hero": {
+    "title": "The NeoBee Club",
+    "subtitle": "一群热爱音乐的朋友，探索灵魂、爵士和电子等多元音乐风格——只为享受音乐的乐趣。"
+  },
+  "about": {
+    "title": "关于我们",
+    "description": "The NeoBee Club 是一群居住在都柏林的音乐爱好者和朋友。我们热爱灵魂、爵士和电子音乐，也乐于探索一切能带来快乐和灵感的音乐风格。我们的宗旨很简单：享受音乐、分享美好、结识同样热爱音乐的你。"
+  },
+  "artists": {
+    "title": "我们的艺术家",
+    "intro": "认识 The NeoBee Club 的成员——每个人都带来独特的音乐热情。",
+    "haosc_role": "DJ & 制作人",
+    "leo_role": "吉他手 & DJ"
+  },
+  "music": {
+    "title": "最新音乐"
+  },
+  "contact": {
+    "title": "联系我们"
+  }
+}

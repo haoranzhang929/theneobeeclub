@@ -1,0 +1,28 @@
+{
+  "navbar": {
+    "brand": "The NeoBee Club",
+    "artists": "Artists",
+    "music": "Music",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "The NeoBee Club",
+    "subtitle": "A collective of music lovers exploring soulful, jazzy, and electronic sounds—here to have fun and share the joy of music."
+  },
+  "about": {
+    "title": "About Us",
+    "description": "The NeoBee Club is a group of friends and music lovers based in Dublin. We're passionate about soulful, jazzy, and electronic music, but we love exploring all genres that bring joy and inspiration. Our mission is simple: to have fun, share great music, and connect with others who feel the same."
+  },
+  "artists": {
+    "title": "Our Artists",
+    "intro": "Meet the people behind The NeoBee Club—each bringing their own flavor and passion for music.",
+    "haosc_role": "DJ & Producer",
+    "leo_role": "Guitarist & DJ"
+  },
+  "music": {
+    "title": "Latest Music"
+  },
+  "contact": {
+    "title": "Connect With Us"
+  }
+}
