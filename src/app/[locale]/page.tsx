@@ -23,11 +23,14 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           className="relative z-20 text-center px-4"
         >
-          <img
-            src="/logo.png"
-            alt="The NeoBee Club Logo"
-            className="mx-auto mb-8 w-32 h-32 sm:w-48 sm:h-48 rounded-full object-cover shadow-lg"
-          />
+          <picture>
+            <source srcSet="/logo.webp" type="image/webp" />
+            <img
+              src="/logo.png"
+              alt="The NeoBee Club Logo"
+              className="mx-auto mb-8 w-32 h-32 sm:w-48 sm:h-48 rounded-full object-cover shadow-lg"
+            />
+          </picture>
           <h1 className="font-display text-3xl sm:text-5xl md:text-7xl font-bold mb-4">{t("hero.title")}</h1>
           <p className="text-base sm:text-xl md:text-2xl text-gray-300 font-normal px-2 sm:px-0">
             {t("hero.subtitle")}
