@@ -1,9 +1,20 @@
 import Navbar from "@/components/Navbar";
 import { works } from "@/data/works";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 
-export default function WorksPage() {
-  const t = useTranslations();
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function WorksPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  const t = await getTranslations();
+
+  console.log("WorksPage - Current locale:", locale);
+  console.log("WorksPage - Sample translation test:", t("works.title"));
 
   return (
     <>
@@ -15,17 +26,19 @@ export default function WorksPage() {
           <h1 className="font-display text-4xl font-bold mb-10 text-center">{t("works.title")}</h1>
           <div className="space-y-12">
             {works.map((work, idx) => {
-              console.log("work.title:", work.title, "=>", t("works." + work.title));
-              console.log("work.description:", work.description, "=>", t("works." + work.description));
+              const title = t(`works.${work.title}`);
+              const description = t(`works.${work.description}`);
+              console.log("work.title:", work.title, "=>", title);
+              console.log("work.description:", work.description, "=>", description);
               return (
                 <div key={idx} className="bg-gray-900 rounded-lg shadow-lg p-6">
-                  <h2 className="font-display text-2xl font-bold mb-2">{t("works." + work.title)}</h2>
-                  <p className="mb-4 text-gray-300">{t("works." + work.description)}</p>
+                  <h2 className="font-display text-2xl font-bold mb-2">{title}</h2>
+                  <p className="mb-4 text-gray-300">{description}</p>
                   <div className="aspect-video">
                     <iframe
                       className="w-full h-full rounded-lg"
                       src={work.src}
-                      title={t("works." + work.title)}
+                      title={title}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                     />
