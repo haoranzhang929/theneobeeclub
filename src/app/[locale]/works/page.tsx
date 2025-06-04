@@ -13,9 +13,6 @@ export default async function WorksPage({ params }: Props) {
 
   const t = await getTranslations();
 
-  console.log("WorksPage - Current locale:", locale);
-  console.log("WorksPage - Sample translation test:", t("works.title"));
-
   return (
     <>
       <Navbar />
@@ -28,8 +25,6 @@ export default async function WorksPage({ params }: Props) {
             {works.map((work, idx) => {
               const title = t(`works.${work.title}`);
               const description = t(`works.${work.description}`);
-              console.log("work.title:", work.title, "=>", title);
-              console.log("work.description:", work.description, "=>", description);
               return (
                 <div key={idx} className="bg-gray-900 rounded-lg shadow-lg p-6">
                   <h2 className="font-display text-2xl font-bold mb-2">{title}</h2>
