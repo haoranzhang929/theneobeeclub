@@ -7,7 +7,7 @@ import { useRef } from "react";
 export default function HeroSection() {
   const t = useTranslations();
   const heroRef = useRef(null);
-  const { scrollYProgress } = useScroll();
+  const { scrollYProgress } = useScroll({ target: heroRef });
 
   // Parallax transforms
   const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
@@ -18,10 +18,13 @@ export default function HeroSection() {
     <section ref={heroRef} className="h-screen flex items-center justify-center relative overflow-hidden">
       {/* Animated Gradient Background with Parallax */}
       <motion.div
-        style={{ y: yBg, scale }}
+        style={{ y: yBg, scale, willChange: "transform" }}
         className="absolute inset-0 z-0 animate-gradient bg-gradient-to-br from-purple-500 via-pink-400 to-yellow-400 opacity-80"
       />
-      <motion.div style={{ opacity }} className="absolute inset-0 bg-gradient-to-b from-black/50 to-black z-10" />
+      <motion.div
+        style={{ opacity, willChange: "opacity" }}
+        className="absolute inset-0 bg-gradient-to-b from-black/50 to-black z-10"
+      />
 
       <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover z-0">
         <source src="/hero-bg.mp4" type="video/mp4" />
@@ -38,6 +41,7 @@ export default function HeroSection() {
           stiffness: 100
         }}
         className="relative z-20 text-center px-4"
+        style={{ willChange: "transform, opacity" }}
       >
         <motion.div
           initial={{ scale: 0, rotate: -180 }}
