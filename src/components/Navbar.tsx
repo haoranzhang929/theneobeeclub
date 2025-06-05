@@ -17,9 +17,18 @@ const Navbar = () => {
 
   // Handle scroll effect
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 50);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -32,10 +41,11 @@ const Navbar = () => {
   ];
 
   return (
-    <motion.nav 
+    <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
+      style={{ willChange: "transform, opacity" }}
       className={`fixed w-full z-50 transition-all duration-300 ${
         scrolled ? "bg-black/90 backdrop-blur-md shadow-lg" : "bg-black/60 backdrop-blur-sm"
       }`}
