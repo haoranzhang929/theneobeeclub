@@ -56,7 +56,7 @@ const ArtistCard = ({ name, role, spotify, youtube, bilibili, imageUrl }: Artist
           <div
             className={`relative w-full h-full bg-gradient-to-br ${getGradientColors(
               name
-            )} flex items-center justify-center transition-transform duration-300 hover:scale-102`}
+            )} flex items-center justify-center transition-transform duration-300 hover:scale-105`}
           >
             {/* Artist initials as placeholder */}
             <div className="text-6xl font-bold text-white/80 select-none">
