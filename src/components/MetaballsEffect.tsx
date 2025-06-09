@@ -9,7 +9,7 @@ import * as THREE from "three";
  * Metaballs are organic-looking blobs that merge together when they get close,
  * creating fluid, dynamic shapes. This implementation features:
  * - 6 animated metaballs with different movement patterns
- * - Mouse interaction with glow effects
+ * - Smooth mouse interaction with glow effects
  * - Dynamic color palette that shifts over time
  * - Pulsing animation effects
  * - Responsive design that handles window resizing
@@ -18,6 +18,10 @@ export default function MetaballsEffect() {
   // Refs to maintain WebGL context and animation frame
   const containerRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<number | null>(null);
+
+  // Mouse tracking refs for smooth interpolation
+  const targetMouseRef = useRef(new THREE.Vector2(0.5, 0.5));
+  const currentMouseRef = useRef(new THREE.Vector2(0.5, 0.5));
 
   useEffect(() => {
     const container = containerRef.current;
@@ -131,15 +135,20 @@ export default function MetaballsEffect() {
           // Convert mouse position to same coordinate system
           vec2 mouse = (u_mouse * 2.0 - 1.0) * vec2(u_resolution.x / u_resolution.y, 1.0);
           
-          // Scaled time for animation speed control
-          float t = u_time * 0.6;
+          // 🎛️ ANIMATION SPEED: Controls overall movement speed of all metaballs
+          // Values: 0.1 (very slow) → 0.3 (slow) → 0.6 (medium) → 1.0 (fast) → 1.5 (very fast)
+          float t = u_time * 0.2;
 
           // ====================================================================
-          // METABALL POSITION CALCULATIONS
+          // 🎛️ METABALL POSITION CALCULATIONS
           // ====================================================================
           
           // Create 6 metaballs with different movement patterns
           // Each uses sine/cosine functions with different frequencies for organic motion
+          // 
+          // 🎛️ MOVEMENT PATTERN ADJUSTMENTS:
+          // - First number (t * X): frequency/speed of individual metaball (higher = faster)
+          // - Second number (* Y): orbit size/distance from center (higher = larger orbit)
           
           // Metaball 1: Large elliptical orbit
           vec2 p1 = vec2(sin(t * 1.3) * 0.8, cos(t * 1.2) * 0.6);
@@ -156,7 +165,9 @@ export default function MetaballsEffect() {
           // Metaball 5: Slow, small circular motion
           vec2 p5 = vec2(sin(t * 2.1) * 0.5, cos(t * 1.8) * 0.4);
           
-          // Metaball 6: Mouse-controlled with damping
+          // Metaball 6: Mouse-controlled with smooth following
+          // 🎛️ MOUSE INFLUENCE: Change 0.8 to adjust how far mouse can pull metaball
+          // Values: 0.5 (subtle) → 0.8 (medium) → 1.2 (strong) → 2.0 (very strong)
           vec2 p6 = mouse * 0.8;
 
           // ====================================================================
@@ -165,6 +176,8 @@ export default function MetaballsEffect() {
           
           // Sum up influence from all metaballs
           // Each metaball contributes to the final field value
+          // 🎛️ METABALL SIZE/INFLUENCE: Adjust third parameter to change metaball size
+          // Values: 0.2 (small) → 0.5 (medium) → 0.8 (large) → 1.2 (very large)
           float v = 0.0;
           v += metaball(uv, p1, 0.6); // Medium influence
           v += metaball(uv, p2, 0.7); // Strong influence  
@@ -178,6 +191,10 @@ export default function MetaballsEffect() {
           // ====================================================================
           
           // Create smooth intensity threshold - only show areas where metaballs overlap significantly
+          // 🎛️ VISIBILITY THRESHOLD: Adjust these values to control when metaballs appear
+          // First value (0.8): minimum field strength to start showing (lower = more visible)
+          // Second value (2.5): field strength for full opacity (lower = easier to reach full opacity)
+          // Values: (0.5, 2.0) loose → (0.8, 2.5) medium → (1.2, 3.0) tight
           float intensity = smoothstep(0.8, 2.5, v);
           
           // Generate dynamic color index based on field value and time
@@ -201,6 +218,10 @@ export default function MetaballsEffect() {
           // ====================================================================
           
           // Mouse glow effect - creates bright highlight near cursor
+          // 🎛️ MOUSE GLOW: Adjust these values to control the glow around mouse
+          // First value (2.0): glow falloff speed (higher = tighter glow)
+          // Second value (0.3): glow intensity (higher = brighter glow)
+          // Color values (0.8, 0.2, 1.0): RGB color of glow
           float glow = exp(-length(uv - mouse) * 2.0) * 0.3;
           finalColor += vec3(0.8, 0.2, 1.0) * glow; // Add purple glow
           
@@ -209,6 +230,10 @@ export default function MetaballsEffect() {
           // ====================================================================
           
           // Pulsing effect - subtle breathing animation
+          // 🎛️ PULSE EFFECT: Adjust these values to control the breathing animation
+          // First value (3.0): pulse speed (higher = faster breathing)
+          // Second value (0.1): pulse strength (higher = more dramatic pulsing)
+          // Third value (0.9): base intensity (lower = more dramatic effect)
           float pulse = sin(t * 3.0) * 0.1 + 0.9;
           intensity *= pulse;
           
@@ -230,11 +255,11 @@ export default function MetaballsEffect() {
      * Mouse Movement Handler
      *
      * Converts mouse screen coordinates to normalized UV coordinates (0-1)
-     * for use in the shader. Accounts for container position and size.
+     * and stores them as target position for smooth interpolation.
      */
     const onMouseMove = (e: MouseEvent) => {
       const rect = container.getBoundingClientRect();
-      uniforms.u_mouse.value.set(
+      targetMouseRef.current.set(
         (e.clientX - rect.left) / rect.width, // X: 0-1 from left to right
         1.0 - (e.clientY - rect.top) / rect.height // Y: 0-1 from bottom to top (flipped for WebGL)
       );
@@ -246,7 +271,7 @@ export default function MetaballsEffect() {
      * Smoothly returns mouse effect to center when cursor leaves the container
      */
     const onMouseLeave = () => {
-      uniforms.u_mouse.value.set(0.5, 0.5); // Center position
+      targetMouseRef.current.set(0.5, 0.5); // Center position
     };
 
     /**
@@ -280,11 +305,27 @@ export default function MetaballsEffect() {
     /**
      * Animation Loop
      *
-     * Runs at ~60fps, updating time uniform and rendering the scene.
-     * Uses requestAnimationFrame for smooth, browser-optimized animation.
+     * Runs at ~60fps, updating time uniform, smoothly interpolating mouse position,
+     * and rendering the scene. Uses requestAnimationFrame for smooth, browser-optimized animation.
      */
     const animate = () => {
+      // ============================================================================
+      // 🎛️ ADJUSTABLE ANIMATION SETTINGS
+      // ============================================================================
+
+      // Mouse Following Speed: Controls how quickly metaballs follow the mouse
+      // Values: 0.01 (very slow) → 0.05 (slow) → 0.1 (medium) → 0.3 (fast)
+      const lerpFactor = 0.01;
+
+      currentMouseRef.current.x += (targetMouseRef.current.x - currentMouseRef.current.x) * lerpFactor;
+      currentMouseRef.current.y += (targetMouseRef.current.y - currentMouseRef.current.y) * lerpFactor;
+
+      // Update the shader uniform with the smoothly interpolated position
+      uniforms.u_mouse.value.copy(currentMouseRef.current);
+
       uniforms.u_time.value += 0.016; // Increment time (~60fps timing)
+      // 🎛️ TIME INCREMENT: Change 0.016 to adjust animation smoothness
+      // Values: 0.008 (very smooth) → 0.016 (normal) → 0.032 (choppy but faster)
       renderer.render(scene, camera); // Render frame
       frameRef.current = requestAnimationFrame(animate); // Schedule next frame
     };
