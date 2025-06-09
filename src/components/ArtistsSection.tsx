@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import ArtistCard from "@/components/ArtistCard";
 import { containerVariants, itemVariants, textRevealVariants } from "@/lib/animations";
+import { artists } from "@/data/artists";
 
 export default function ArtistsSection() {
   const t = useTranslations();
@@ -27,25 +28,28 @@ export default function ArtistsSection() {
           {t("artists.intro")}
         </motion.p>
 
-        <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12" variants={containerVariants}>
-          <motion.div variants={itemVariants}>
-            <ArtistCard
-              name="HAØSC"
-              role={t("artists.haosc_role")}
-              spotify="https://open.spotify.com/artist/0ASsfvcyv6P3TVLEYLurds"
-              youtube="https://www.youtube.com/@HAOSC"
-              bilibili="https://space.bilibili.com/3546828570101837"
-              imageUrl="/haosc.jpg"
-            />
-          </motion.div>
-          <motion.div variants={itemVariants}>
-            <ArtistCard
-              name="Leo"
-              role={t("artists.leo_role")}
-              bilibili="https://space.bilibili.com/327769785"
-              imageUrl="/leo.jpg"
-            />
-          </motion.div>
+        <motion.div
+          className={`grid gap-8 lg:gap-12 ${
+            artists.length === 1
+              ? "grid-cols-1 max-w-md mx-auto"
+              : artists.length === 2
+              ? "grid-cols-1 md:grid-cols-2"
+              : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+          }`}
+          variants={containerVariants}
+        >
+          {artists.map((artist) => (
+            <motion.div key={artist.id} variants={itemVariants}>
+              <ArtistCard
+                name={artist.name}
+                role={t(artist.roleKey)}
+                spotify={artist.social.spotify}
+                youtube={artist.social.youtube}
+                bilibili={artist.social.bilibili}
+                imageUrl={artist.imageUrl}
+              />
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </motion.section>

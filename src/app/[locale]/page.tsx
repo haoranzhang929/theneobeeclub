@@ -5,6 +5,7 @@ import ArtistsSection from "@/components/ArtistsSection";
 import MusicSection from "@/components/MusicSection";
 import ContactSection from "@/components/ContactSection";
 import { setRequestLocale } from "next-intl/server";
+import { getAllSocialLinks } from "@/data/artists";
 
 export default async function Home(props: { params: Promise<{ locale: string }> }) {
   const { params } = props;
@@ -27,12 +28,7 @@ export default async function Home(props: { params: Promise<{ locale: string }> 
     },
     url: `https://theneobee.club/${locale}`,
     logo: "https://theneobee.club/logo.webp",
-    sameAs: [
-      "https://open.spotify.com/artist/0ASsfvcyv6P3TVLEYLurds",
-      "https://www.youtube.com/@HAOSC",
-      "https://space.bilibili.com/3546828570101837",
-      "https://space.bilibili.com/327769785"
-    ]
+    sameAs: getAllSocialLinks()
   };
 
   return (

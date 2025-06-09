@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
-import { FaSpotify, FaYoutube } from "react-icons/fa";
+import { FaSpotify, FaYoutube, FaInstagram, FaTwitter } from "react-icons/fa";
+import { SiSoundcloud } from "react-icons/si";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -10,10 +11,23 @@ interface ArtistCardProps {
   spotify?: string;
   youtube?: string;
   bilibili?: string;
+  instagram?: string;
+  soundcloud?: string;
+  twitter?: string;
   imageUrl: string;
 }
 
-const ArtistCard = ({ name, role, spotify, youtube, bilibili, imageUrl }: ArtistCardProps) => {
+const ArtistCard = ({ 
+  name, 
+  role, 
+  spotify, 
+  youtube, 
+  bilibili, 
+  instagram,
+  soundcloud,
+  twitter,
+  imageUrl 
+}: ArtistCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [imageError, setImageError] = useState(false);
 
@@ -26,6 +40,53 @@ const ArtistCard = ({ name, role, spotify, youtube, bilibili, imageUrl }: Artist
     }
     return "from-gray-500 to-gray-700";
   };
+
+  // Bilibili icon component
+  const BilibiliIcon = () => (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4.5 2.5a1 1 0 0 1 1.32-.08l.1.08L8.59 5.5H15.4l2.67-3a1 1 0 0 1 1.5 1.32l-.08.1-1.84 2.08H20a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-11a2 2 0 0 1 2-2h1.25L3.41 3.92A1 1 0 0 1 4.5 2.5zm15.5 5H4v11h16V7.5zm-10.5 3a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1zm5 0a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1z" />
+    </svg>
+  );
+
+  // Social platform configurations
+  const socialPlatforms = [
+    {
+      url: spotify,
+      icon: <FaSpotify size={28} />,
+      hoverColor: "text-green-500 hover:text-green-400",
+      name: "Spotify"
+    },
+    {
+      url: youtube,
+      icon: <FaYoutube size={28} />,
+      hoverColor: "text-red-500 hover:text-red-400",
+      name: "YouTube"
+    },
+    {
+      url: bilibili,
+      icon: <BilibiliIcon />,
+      hoverColor: "text-blue-400 hover:text-blue-300",
+      name: "Bilibili"
+    },
+    {
+      url: instagram,
+      icon: <FaInstagram size={28} />,
+      hoverColor: "text-pink-500 hover:text-pink-400",
+      name: "Instagram"
+    },
+    {
+      url: soundcloud,
+      icon: <SiSoundcloud size={28} />,
+      hoverColor: "text-orange-500 hover:text-orange-400",
+      name: "SoundCloud"
+    },
+    {
+      url: twitter,
+      icon: <FaTwitter size={28} />,
+      hoverColor: "text-blue-400 hover:text-blue-300",
+      name: "Twitter"
+    }
+  ].filter(platform => platform.url); // Only show platforms with URLs
 
   return (
     <motion.div
@@ -84,40 +145,18 @@ const ArtistCard = ({ name, role, spotify, youtube, bilibili, imageUrl }: Artist
             isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          {spotify && (
+          {socialPlatforms.map((platform, index) => (
             <a
-              href={spotify}
+              key={index}
+              href={platform.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-green-500 hover:text-green-400 transition-all duration-200 hover:scale-110"
+              className={`${platform.hoverColor} transition-all duration-200 hover:scale-110`}
+              aria-label={`${name} on ${platform.name}`}
             >
-              <FaSpotify size={28} />
+              {platform.icon}
             </a>
-          )}
-
-          {youtube && (
-            <a
-              href={youtube}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-red-500 hover:text-red-400 transition-all duration-200 hover:scale-110"
-            >
-              <FaYoutube size={28} />
-            </a>
-          )}
-
-          {bilibili && (
-            <a
-              href={bilibili}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-400 hover:text-blue-300 transition-all duration-200 hover:scale-110"
-            >
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4.5 2.5a1 1 0 0 1 1.32-.08l.1.08L8.59 5.5H15.4l2.67-3a1 1 0 0 1 1.5 1.32l-.08.1-1.84 2.08H20a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-11a2 2 0 0 1 2-2h1.25L3.41 3.92A1 1 0 0 1 4.5 2.5zm15.5 5H4v11h16V7.5zm-10.5 3a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1zm5 0a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1z" />
-              </svg>
-            </a>
-          )}
+          ))}
         </div>
       </div>
     </motion.div>
