@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 import { setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 import "../globals.css";
-import { Playfair_Display, Montserrat, Noto_Sans_SC } from "next/font/google";
+import { Playfair_Display, Montserrat, Noto_Sans_SC, Orbitron } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 
 const playfair = Playfair_Display({
@@ -21,6 +21,13 @@ const notoSansSC = Noto_Sans_SC({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   variable: "--font-noto-sans-sc"
+});
+
+// 新增音乐风格字体
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  weight: ["400", "700", "900"],
+  variable: "--font-orbitron"
 });
 
 export function generateStaticParams() {
@@ -126,11 +133,12 @@ export default async function LocaleLayout(props: { children: ReactNode; params:
     <html
       lang={locale}
       suppressHydrationWarning
-      className={`scroll-smooth ${bodyFontClass} ${notoSansSC.variable}`}
+      className={`scroll-smooth ${bodyFontClass} ${notoSansSC.variable} ${orbitron.variable}`}
       style={
         {
           "--font-playfair": playfair.style.fontFamily,
-          "--font-noto-sans-sc": notoSansSC.style.fontFamily
+          "--font-noto-sans-sc": notoSansSC.style.fontFamily,
+          "--font-orbitron": orbitron.style.fontFamily
         } as React.CSSProperties
       }
     >

@@ -21,10 +21,11 @@
     "leo_role": "Guitarist & DJ | Live Performance Artist"
   },
   "music": {
-    "title": "Latest Musical Works"
+    "title": "Latest Release",
+    "viewMore": "View Complete Collection"
   },
   "works": {
-    "title": "Our Musical Works & Projects",
+    "title": "Complete Works Collection",
     "funky_house_title": "Funky House Mix with Live Guitar Performance",
     "funky_house_description": "An immersive soulful house mix featuring live guitar improvisation and electronic production.",
     "chill_jazzy_title": "Chill Jazzy Electronic Set",

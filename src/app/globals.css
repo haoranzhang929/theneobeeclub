@@ -295,3 +295,8 @@ html {
 .neon-glow {
   text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor, 0 0 20px currentColor;
 }
+
+/* Enhanced font class for music branding */
+.font-orbitron {
+  font-family: var(--font-orbitron, "Orbitron"), sans-serif;
+}

@@ -11,7 +11,7 @@ const Navbar = () => {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  
+
   // Remove locale prefix from pathname for switching
   const pathWithoutLocale = pathname.replace(/^\/(en|zh)/, "");
 
@@ -26,13 +26,12 @@ const Navbar = () => {
 
   const navLinks = [
     { href: `/${locale}/#artists`, label: t("artists") },
-    { href: `/${locale}/#music`, label: t("music") },
     { href: `/${locale}/works`, label: t("works") },
     { href: `/${locale}/#contact`, label: t("contact") }
   ];
 
   return (
-    <motion.nav 
+    <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
@@ -43,18 +42,15 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo with animation */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link href={`/${locale}`} className="relative group">
               <motion.span
-                className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+                className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-yellow-400 bg-clip-text text-transparent font-orbitron tracking-wide"
                 animate={{
                   backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
                 }}
-                transition={{ duration: 3, repeat: Infinity }}
-                style={{ backgroundSize: "200% 200%" }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                style={{ backgroundSize: "300% 300%" }}
               >
                 {t("brand")}
               </motion.span>
@@ -76,10 +72,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
-            <motion.div
-              animate={menuOpen ? "open" : "closed"}
-              className="w-7 h-7 flex flex-col justify-around"
-            >
+            <motion.div animate={menuOpen ? "open" : "closed"} className="w-7 h-7 flex flex-col justify-around">
               <motion.span
                 variants={{
                   closed: { rotate: 0, y: 0 },
@@ -106,7 +99,7 @@ const Navbar = () => {
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center space-x-6">
-            <motion.div 
+            <motion.div
               className="flex items-baseline space-x-1"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -149,21 +142,18 @@ const Navbar = () => {
             </motion.div>
 
             {/* Language switcher */}
-            <motion.div 
+            <motion.div
               className="flex items-center space-x-2 ml-8"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.6 }}
             >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="relative"
-              >
+              <motion.div whileHover={{ scale: 1.05 }} className="relative">
                 <Link
                   href={`/en${pathWithoutLocale}`}
                   className={`px-3 py-1.5 rounded-md font-medium transition-all duration-200 ${
-                    locale === "en" 
-                      ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg" 
+                    locale === "en"
+                      ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg"
                       : "hover:bg-gray-700/50 text-gray-300"
                   }`}
                   prefetch={false}
@@ -171,18 +161,15 @@ const Navbar = () => {
                   EN
                 </Link>
               </motion.div>
-              
+
               <span className="text-gray-400">|</span>
-              
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="relative"
-              >
+
+              <motion.div whileHover={{ scale: 1.05 }} className="relative">
                 <Link
                   href={`/zh${pathWithoutLocale}`}
                   className={`px-3 py-1.5 rounded-md font-medium transition-all duration-200 ${
-                    locale === "zh" 
-                      ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg" 
+                    locale === "zh"
+                      ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg"
                       : "hover:bg-gray-700/50 text-gray-300"
                   }`}
                   prefetch={false}
@@ -204,7 +191,7 @@ const Navbar = () => {
               transition={{ duration: 0.3, ease: "easeInOut" }}
               className="md:hidden overflow-hidden"
             >
-              <motion.div 
+              <motion.div
                 className="bg-black/95 backdrop-blur-md rounded-b-2xl shadow-2xl mx-2 mb-2 p-4 space-y-2"
                 variants={{
                   hidden: { opacity: 0 },
@@ -233,9 +220,9 @@ const Navbar = () => {
                     </Link>
                   </motion.div>
                 ))}
-                
+
                 {/* Mobile language switcher */}
-                <motion.div 
+                <motion.div
                   className="flex items-center justify-center space-x-2 pt-4 border-t border-gray-700"
                   variants={{
                     hidden: { opacity: 0, y: 20 },
@@ -245,8 +232,8 @@ const Navbar = () => {
                   <Link
                     href={`/en${pathWithoutLocale}`}
                     className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
-                      locale === "en" 
-                        ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white" 
+                      locale === "en"
+                        ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white"
                         : "hover:bg-gray-700 text-gray-300"
                     }`}
                     prefetch={false}
@@ -258,8 +245,8 @@ const Navbar = () => {
                   <Link
                     href={`/zh${pathWithoutLocale}`}
                     className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
-                      locale === "zh" 
-                        ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white" 
+                      locale === "zh"
+                        ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white"
                         : "hover:bg-gray-700 text-gray-300"
                     }`}
                     prefetch={false}

@@ -21,14 +21,15 @@
     "leo_role": "吉他手 & DJ | 现场表演艺术家"
   },
   "music": {
-    "title": "最新音乐作品"
+    "title": "最新发布",
+    "viewMore": "查看完整作品集"
   },
   "works": {
-    "title": "我们的音乐作品与项目",
-    "funky_house_title": "放克浩室现场吉他演奏混音",
-    "funky_house_description": "沉浸式灵魂浩室混音，融合现场吉他即兴演奏和电子制作。",
-    "chill_jazzy_title": "慵懒爵士电子套曲",
-    "chill_jazzy_description": "爵士旋律与电子节拍的轻松融合，完美适合深夜聆听。"
+    "title": "完整作品集",
+    "funky_house_title": "Funky House混音配现场吉他表演",
+    "funky_house_description": "沉浸式灵魂爵士屋音乐，融合现场吉他即兴演奏和电子制作。",
+    "chill_jazzy_title": "舒缓爵士电子音乐集",
+    "chill_jazzy_description": "爵士旋律与电子节拍的完美融合，适合深夜聆听的放松音乐。"
   },
   "contact": {
     "title": "联系 The NeoBee Club"
