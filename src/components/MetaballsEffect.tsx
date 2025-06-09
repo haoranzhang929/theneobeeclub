@@ -13,6 +13,9 @@ import * as THREE from "three";
  * - Dynamic color palette that shifts over time
  * - Pulsing animation effects
  * - Responsive design that handles window resizing
+ *
+ * Inspired by Codrops tutorial:
+ * https://tympanus.net/codrops/2025/06/09/how-to-create-interactive-droplet-like-metaballs-with-three-js-and-glsl/
  */
 export default function MetaballsEffect() {
   // Refs to maintain WebGL context and animation frame
