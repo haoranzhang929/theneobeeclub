@@ -5,9 +5,18 @@ import { setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 import "../globals.css";
 import { Playfair_Display, Montserrat, Noto_Sans_SC } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 
-const playfair = Playfair_Display({ subsets: ["latin"], weight: ["700"] });
-const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "700"] });
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["700"],
+  variable: "--font-playfair"
+});
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-montserrat"
+});
 const notoSansSC = Noto_Sans_SC({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
@@ -131,6 +140,7 @@ export default async function LocaleLayout(props: { children: ReactNode; params:
       <body className="bg-black text-white min-h-screen" suppressHydrationWarning>
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
+          <Analytics />
         </NextIntlClientProvider>
       </body>
     </html>
