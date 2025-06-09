@@ -7,30 +7,30 @@
     "works": "Our Works"
   },
   "hero": {
-    "title": "The NeoBee Club",
-    "subtitle": "A collective of music lovers exploring soulful, jazzy, and electronic sounds—here to have fun and share the joy of music."
+    "title": "The NeoBee Club - Dublin Music Collective",
+    "subtitle": "A Dublin-based collective of music lovers exploring soulful, jazzy, and electronic sounds. Join us as we share the joy of music through DJ sets, live performances, and creative collaborations."
   },
   "about": {
-    "title": "About Us",
-    "description": "The NeoBee Club is a group of friends and music lovers based in Dublin. We're passionate about soulful, jazzy, and electronic music, but we love exploring all genres that bring joy and inspiration. Our mission is simple: to have fun, share great music, and connect with others who feel the same."
+    "title": "About The NeoBee Club",
+    "description": "The NeoBee Club is a dynamic group of friends and music enthusiasts based in Dublin, Ireland. We're passionate about soulful, jazzy, and electronic music, but we love exploring all genres that bring joy and inspiration. Our mission is simple: to have fun, share great music, and connect with others who feel the same passion for sonic exploration."
   },
   "artists": {
-    "title": "Our Artists",
-    "intro": "Meet the people behind The NeoBee Club—each bringing their own flavor and passion for music.",
-    "haosc_role": "DJ & Producer",
-    "leo_role": "Guitarist & DJ"
+    "title": "Meet Our Artists",
+    "intro": "Discover the talented individuals behind The NeoBee Club—each bringing their unique flavor and deep passion for music to our collective.",
+    "haosc_role": "DJ & Producer | Electronic Music Specialist",
+    "leo_role": "Guitarist & DJ | Live Performance Artist"
   },
   "music": {
-    "title": "Latest Work"
+    "title": "Latest Musical Works"
   },
   "works": {
-    "title": "Our Works",
-    "funky_house_title": "Funky House Mix with Guitar",
-    "funky_house_description": "A soulful house mix with live guitar.",
-    "chill_jazzy_title": "Chill Jazzy Set",
-    "chill_jazzy_description": "A relaxing jazzy electronic set."
+    "title": "Our Musical Works & Projects",
+    "funky_house_title": "Funky House Mix with Live Guitar Performance",
+    "funky_house_description": "An immersive soulful house mix featuring live guitar improvisation and electronic production.",
+    "chill_jazzy_title": "Chill Jazzy Electronic Set",
+    "chill_jazzy_description": "A relaxing blend of jazzy melodies and electronic beats perfect for late-night listening."
   },
   "contact": {
-    "title": "Connect With Us"
+    "title": "Connect With The NeoBee Club"
   }
 }
