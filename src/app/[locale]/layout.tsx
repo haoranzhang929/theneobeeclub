@@ -23,6 +23,7 @@ const notoSansSC = Noto_Sans_SC({
   variable: "--font-noto-sans-sc"
 });
 
+// 新增音乐风格字体
 const orbitron = Orbitron({
   subsets: ["latin"],
   weight: ["400", "700", "900"],
