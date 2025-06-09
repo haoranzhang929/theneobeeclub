@@ -3,6 +3,9 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useRef } from "react";
+import dynamic from "next/dynamic";
+
+const MetaballsEffect = dynamic(() => import("./MetaballsEffect"), { ssr: false });
 
 export default function HeroSection() {
   const t = useTranslations();
@@ -21,11 +24,9 @@ export default function HeroSection() {
         style={{ y: yBg, scale }}
         className="absolute inset-0 z-0 animate-gradient bg-gradient-to-br from-purple-500 via-pink-400 to-yellow-400 opacity-80"
       />
-      <motion.div style={{ opacity }} className="absolute inset-0 bg-gradient-to-b from-black/50 to-black z-10" />
+      <MetaballsEffect />
 
-      <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover z-0">
-        <source src="/hero-bg.mp4" type="video/mp4" />
-      </video>
+      <motion.div style={{ opacity }} className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/65 z-10" />
 
       <motion.div
         initial={{ opacity: 0, y: 100, scale: 0.8 }}
