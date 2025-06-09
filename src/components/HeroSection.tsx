@@ -24,9 +24,9 @@ export default function HeroSection() {
         style={{ y: yBg, scale }}
         className="absolute inset-0 z-0 animate-gradient bg-gradient-to-br from-purple-500 via-pink-400 to-yellow-400 opacity-80"
       />
-      <motion.div style={{ opacity }} className="absolute inset-0 bg-gradient-to-b from-black/50 to-black z-10" />
-
       <MetaballsEffect />
+
+      <motion.div style={{ opacity }} className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/55 z-10" />
 
       <motion.div
         initial={{ opacity: 0, y: 100, scale: 0.8 }}
