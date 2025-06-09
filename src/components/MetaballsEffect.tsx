@@ -4,7 +4,7 @@ import * as THREE from "three";
 
 export default function MetaballsEffect() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const frameRef = useRef<number>();
+  const frameRef = useRef<number | null>(null);
 
   useEffect(() => {
     const container = containerRef.current;

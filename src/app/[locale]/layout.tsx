@@ -4,31 +4,29 @@ import { ReactNode } from "react";
 import { setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 import "../globals.css";
-import { Playfair_Display, Montserrat, Noto_Sans_SC, Orbitron } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["700"],
-  variable: "--font-playfair"
-});
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-montserrat"
-});
-const notoSansSC = Noto_Sans_SC({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-noto-sans-sc"
-});
+const playfair = {
+  className: "",
+  variable: "--font-playfair",
+  style: { fontFamily: "Playfair Display" }
+};
+const montserrat = {
+  className: "",
+  variable: "--font-montserrat",
+  style: { fontFamily: "Montserrat" }
+};
+const notoSansSC = {
+  className: "",
+  variable: "--font-noto-sans-sc",
+  style: { fontFamily: "Noto Sans SC" }
+};
+const orbitron = {
+  className: "",
+  variable: "--font-orbitron",
+  style: { fontFamily: "Orbitron" }
+};
 
-// 新增音乐风格字体
-const orbitron = Orbitron({
-  subsets: ["latin"],
-  weight: ["400", "700", "900"],
-  variable: "--font-orbitron"
-});
 
 export function generateStaticParams() {
   return [{ locale: "en" }, { locale: "zh" }];
