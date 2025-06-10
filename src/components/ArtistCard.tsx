@@ -146,7 +146,7 @@ const ArtistCard = ({
 
         <div
           className={`flex space-x-6 transition-all duration-300 ${
-            isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            isHovered ? "opacity-100 translate-y-0" : "opacity-100 translate-y-0 md:opacity-0 md:translate-y-4"
           }`}
         >
           {socialPlatforms.map((platform, index) => (
