@@ -17,16 +17,16 @@ interface ArtistCardProps {
   imageUrl: string;
 }
 
-const ArtistCard = ({ 
-  name, 
-  role, 
-  spotify, 
-  youtube, 
-  bilibili, 
+const ArtistCard = ({
+  name,
+  role,
+  spotify,
+  youtube,
+  bilibili,
   instagram,
   soundcloud,
   twitter,
-  imageUrl 
+  imageUrl
 }: ArtistCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [imageError, setImageError] = useState(false);
@@ -86,7 +86,7 @@ const ArtistCard = ({
       hoverColor: "text-blue-400 hover:text-blue-300",
       name: "Twitter"
     }
-  ].filter(platform => platform.url); // Only show platforms with URLs
+  ].filter((platform) => platform.url); // Only show platforms with URLs
 
   return (
     <motion.div
@@ -101,14 +101,18 @@ const ArtistCard = ({
       <div className="relative h-80 overflow-hidden rounded-t-2xl">
         {!imageError ? (
           <div className="relative w-full h-full transition-transform duration-300 hover:scale-105">
-            <Image
-              src={imageUrl}
-              alt={name}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              onError={() => setImageError(true)}
-            />
+            <picture>
+              <source srcSet={imageUrl.replace(".jpg", ".webp")} type="image/webp" />
+              <Image
+                src={imageUrl}
+                alt={name}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                onError={() => setImageError(true)}
+                priority={false}
+              />
+            </picture>
             {/* Simple static overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent" />
           </div>

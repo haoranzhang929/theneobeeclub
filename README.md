@@ -126,13 +126,13 @@ The metaballs effect includes easily adjustable parameters:
 
 4. **Run the development server**
 
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   # or
-   pnpm dev
-   ```
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
 
 5. **Open your browser**
    Visit [http://localhost:3000](http://localhost:3000) to see the website.
