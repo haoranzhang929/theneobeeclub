@@ -26,10 +26,10 @@
   },
   "works": {
     "title": "完整作品集",
-    "funky_house_title": "Funky House混音配现场吉他表演",
-    "funky_house_description": "沉浸式灵魂爵士屋音乐，融合现场吉他即兴演奏和电子制作。",
-    "chill_jazzy_title": "舒缓爵士电子音乐集",
-    "chill_jazzy_description": "爵士旋律与电子节拍的完美融合，适合深夜聆听的放松音乐。"
+    "funky_house_title_v1": "Funky House混音配现场吉他表演",
+    "funky_house_description_v1": "沉浸式灵魂爵士House音乐，融合现场吉他即兴演奏。",
+    "jazzy_house_title_v2": "Jazzy House混音配现场吉他表演",
+    "jazzy_house_description_v2": "沉浸式爵士House音乐，融合现场吉他即兴演奏。"
   },
   "contact": {
     "title": "联系 The NeoBee Club"

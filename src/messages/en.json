@@ -26,10 +26,10 @@
   },
   "works": {
     "title": "Complete Works Collection",
-    "funky_house_title": "Funky House Mix with Live Guitar Performance",
-    "funky_house_description": "An immersive soulful house mix featuring live guitar improvisation and electronic production.",
-    "chill_jazzy_title": "Chill Jazzy Electronic Set",
-    "chill_jazzy_description": "A relaxing blend of jazzy melodies and electronic beats perfect for late-night listening."
+    "jazzy_house_title_v2": "Jazz House Mix with Live Guitar Performance",
+    "jazzy_house_description_v2": "An immersive jazzy house mix featuring live guitar improvisation.",
+    "funky_house_title_v1": "Funky House Mix with Live Guitar Performance",
+    "funky_house_description_v1": "An immersive soulful house mix featuring live guitar improvisation."
   },
   "contact": {
     "title": "Connect With The NeoBee Club"
