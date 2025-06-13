@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useTranslations } from "next-intl";
@@ -8,6 +8,7 @@ import { works } from "@/data/works";
 
 const Banner = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const bannerRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("banner");
 
   // Extract latest video ID from the first entry in works.ts
@@ -27,11 +28,25 @@ const Banner = () => {
 
   // Add/remove top padding to body when banner is visible/hidden
   useEffect(() => {
-    const bannerHeight = isVisible ? "52px" : "0px"; // Adjust based on actual banner height
-    document.body.style.paddingTop = bannerHeight;
+    const updateBodyPadding = () => {
+      if (isVisible && bannerRef.current) {
+        const bannerHeight = bannerRef.current.offsetHeight;
+        document.body.style.paddingTop = `${bannerHeight}px`;
+      } else {
+        document.body.style.paddingTop = "0px";
+      }
+    };
+
+    // Update immediately
+    updateBodyPadding();
+
+    // Update on resize
+    const handleResize = () => updateBodyPadding();
+    window.addEventListener("resize", handleResize);
 
     return () => {
       document.body.style.paddingTop = "0px";
+      window.removeEventListener("resize", handleResize);
     };
   }, [isVisible]);
 
@@ -45,6 +60,7 @@ const Banner = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.div
+          ref={bannerRef}
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -100, opacity: 0 }}
@@ -53,9 +69,10 @@ const Banner = () => {
           role="banner"
           aria-label="Latest video announcement"
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between py-3">
-              <div className="flex items-center space-x-3">
+          <div className="max-w-7xl mx-auto px-1.5 sm:px-4 lg:px-8">
+            <div className="flex items-center justify-between py-2 sm:py-3 h-11 sm:h-12">
+              {/* Content container - single line, no wrapping */}
+              <div className="flex items-center space-x-1 sm:space-x-2 flex-1 min-w-0 overflow-hidden">
                 <motion.div
                   animate={{
                     scale: [1, 1.1, 1],
@@ -66,32 +83,37 @@ const Banner = () => {
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
-                  className="text-xl"
+                  className="text-sm sm:text-base lg:text-lg flex-shrink-0"
                 >
                   🎵
                 </motion.div>
-                <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-2">
-                  <span className="font-medium text-sm sm:text-base">{t("newVideo")}</span>
-                  <a
-                    href={latestVideoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-bold text-white underline hover:text-yellow-200 transition-colors duration-200 text-sm sm:text-base"
-                    aria-label={`${t("watchNow")} - ${t("newVideo")}`}
-                  >
-                    {t("watchNow")}
-                  </a>
-                </div>
+
+                {/* Text content - can truncate if needed */}
+                <span className="font-medium text-xs sm:text-sm lg:text-base truncate flex-shrink min-w-0">
+                  {t("newVideo")}
+                </span>
+
+                {/* Watch button - always visible */}
+                <a
+                  href={latestVideoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-white underline hover:text-yellow-200 transition-colors duration-200 text-xs sm:text-sm lg:text-base whitespace-nowrap flex-shrink-0"
+                  aria-label={`${t("watchNow")} - ${t("newVideo")}`}
+                >
+                  {t("watchNow")}
+                </a>
               </div>
 
+              {/* Close button - always visible */}
               <motion.button
                 onClick={handleDismiss}
                 whileHover={{ scale: 1.1, rotate: 90 }}
                 whileTap={{ scale: 0.9 }}
-                className="p-1 hover:bg-white/10 rounded-full transition-colors duration-200"
+                className="p-1 sm:p-1.5 hover:bg-white/10 rounded-full transition-colors duration-200 flex-shrink-0 ml-1"
                 aria-label="Dismiss banner"
               >
-                <XMarkIcon className="h-5 w-5" />
+                <XMarkIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4 lg:h-5 lg:w-5" />
               </motion.button>
             </div>
           </div>
