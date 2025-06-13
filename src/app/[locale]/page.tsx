@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import Banner from "@/components/Banner";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ArtistsSection from "@/components/ArtistsSection";
@@ -35,6 +36,7 @@ export default async function Home(props: { params: Promise<{ locale: string }> 
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <main className="min-h-screen relative overflow-x-hidden">
+        <Banner />
         <Navbar />
         <HeroSection />
         <AboutSection />

@@ -33,5 +33,9 @@
   },
   "contact": {
     "title": "Connect With The NeoBee Club"
+  },
+  "banner": {
+    "newVideo": "🎶 New video is out!",
+    "watchNow": "Watch Now"
   }
 }
