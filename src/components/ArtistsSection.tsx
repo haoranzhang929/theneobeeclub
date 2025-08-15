@@ -47,6 +47,10 @@ export default function ArtistsSection() {
                 youtube={artist.social.youtube}
                 bilibili={artist.social.bilibili}
                 imageUrl={artist.imageUrl}
+                instagram={artist.social.instagram}
+                soundcloud={artist.social.soundcloud}
+                twitter={artist.social.twitter}
+                xiaohongshu={artist.social.xiaohongshu}
               />
             </motion.div>
           ))}

@@ -14,6 +14,7 @@ interface ArtistCardProps {
   instagram?: string;
   soundcloud?: string;
   twitter?: string;
+  xiaohongshu?: string;
   imageUrl: string;
 }
 
@@ -26,6 +27,7 @@ const ArtistCard = ({
   instagram,
   soundcloud,
   twitter,
+  xiaohongshu,
   imageUrl
 }: ArtistCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -45,6 +47,13 @@ const ArtistCard = ({
   const BilibiliIcon = () => (
     <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
       <path d="M4.5 2.5a1 1 0 0 1 1.32-.08l.1.08L8.59 5.5H15.4l2.67-3a1 1 0 0 1 1.5 1.32l-.08.1-1.84 2.08H20a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-11a2 2 0 0 1 2-2h1.25L3.41 3.92A1 1 0 0 1 4.5 2.5zm15.5 5H4v11h16V7.5zm-10.5 3a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1zm5 0a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1z" />
+    </svg>
+  );
+
+  // Xiaohongshu icon component
+  const XiaohongshuIcon = () => (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z" />
     </svg>
   );
 
@@ -85,6 +94,12 @@ const ArtistCard = ({
       icon: <FaTwitter size={28} />,
       hoverColor: "text-blue-400 hover:text-blue-300",
       name: "Twitter"
+    },
+    {
+      url: xiaohongshu,
+      icon: <XiaohongshuIcon />,
+      hoverColor: "text-red-400 hover:text-red-300",
+      name: "Xiaohongshu"
     }
   ].filter((platform) => platform.url); // Only show platforms with URLs
 

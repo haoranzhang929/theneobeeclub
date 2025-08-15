@@ -10,6 +10,7 @@ export interface Artist {
     instagram?: string;
     soundcloud?: string;
     twitter?: string;
+    xiaohongshu?: string;
   };
 }
 
@@ -18,7 +19,7 @@ export const artists: Artist[] = [
     id: "haosc",
     name: "HAØSC",
     roleKey: "artists.haosc_role",
-    imageUrl: "/haosc.jpg",
+    imageUrl: "/haosc.webp",
     social: {
       spotify: "https://open.spotify.com/artist/0ASsfvcyv6P3TVLEYLurds",
       youtube: "https://www.youtube.com/@HAOSC",
@@ -29,9 +30,19 @@ export const artists: Artist[] = [
     id: "leo",
     name: "Leo",
     roleKey: "artists.leo_role",
-    imageUrl: "/leo.jpg",
+    imageUrl: "/leo.webp",
     social: {
       bilibili: "https://space.bilibili.com/327769785"
+    }
+  },
+  {
+    id: "kewusir",
+    name: "Kewusir",
+    roleKey: "artists.kewusir_role",
+    imageUrl: "/kewusir.webp",
+    social: {
+      instagram: "https://www.instagram.com/kewusir",
+      xiaohongshu: "https://www.xiaohongshu.com/user/profile/5f146132000000000101d967"
     }
   }
 ];
