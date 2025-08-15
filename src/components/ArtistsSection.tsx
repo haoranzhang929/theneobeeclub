@@ -2,11 +2,12 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import ArtistCard from "@/components/ArtistCard";
-import { containerVariants, itemVariants, textRevealVariants } from "@/lib/animations";
+import { useOptimizedVariants } from "@/lib/animations";
 import { artists } from "@/data/artists";
 
 export default function ArtistsSection() {
   const t = useTranslations();
+  const { containerVariants, itemVariants, textRevealVariants } = useOptimizedVariants();
 
   return (
     <motion.section

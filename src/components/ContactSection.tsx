@@ -1,10 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { containerVariants, itemVariants, textRevealVariants } from "@/lib/animations";
+import { useOptimizedVariants } from "@/lib/animations";
 
 export default function ContactSection() {
   const t = useTranslations();
+  const { containerVariants, itemVariants, textRevealVariants } = useOptimizedVariants();
 
   return (
     <motion.section
@@ -17,19 +18,19 @@ export default function ContactSection() {
     >
       {/* Animated background grid */}
       <div className="absolute inset-0 opacity-10">
-        {[...Array(50)].map((_, i) => (
+        {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-px h-px bg-white"
             style={{
-              left: `${(i % 10) * 10}%`,
-              top: `${Math.floor(i / 10) * 20}%`
+              left: `${(i % 5) * 20}%`,
+              top: `${Math.floor(i / 5) * 25}%`
             }}
-            animate={{ opacity: [0.1, 0.5, 0.1] }}
+            animate={{ opacity: [0.1, 0.4, 0.1] }}
             transition={{
-              duration: 3,
+              duration: 4,
               repeat: Infinity,
-              delay: Math.random() * 2
+              delay: i * 0.2
             }}
           />
         ))}

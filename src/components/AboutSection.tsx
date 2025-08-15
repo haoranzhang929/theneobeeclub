@@ -1,10 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { containerVariants, textRevealVariants } from "@/lib/animations";
+import { useOptimizedVariants } from "@/lib/animations";
 
 export default function AboutSection() {
   const t = useTranslations();
+  const { containerVariants, textRevealVariants } = useOptimizedVariants();
 
   return (
     <motion.section

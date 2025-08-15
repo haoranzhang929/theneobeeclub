@@ -32,11 +32,11 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: 100, scale: 0.8 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{
-          duration: 1.2,
+          duration: 1,
           ease: "easeOut",
           type: "spring",
-          damping: 20,
-          stiffness: 100
+          damping: 15,
+          stiffness: 80
         }}
         className="relative z-20 text-center px-4"
       >

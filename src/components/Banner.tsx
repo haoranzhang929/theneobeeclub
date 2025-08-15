@@ -75,11 +75,11 @@ const Banner = () => {
               <div className="flex items-center space-x-1 sm:space-x-2 flex-1 min-w-0 overflow-hidden">
                 <motion.div
                   animate={{
-                    scale: [1, 1.1, 1],
-                    rotate: [0, 5, -5, 0]
+                    scale: [1, 1.05, 1],
+                    rotate: [0, 3, -3, 0]
                   }}
                   transition={{
-                    duration: 2,
+                    duration: 4,
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}

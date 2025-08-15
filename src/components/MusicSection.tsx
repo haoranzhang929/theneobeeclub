@@ -4,12 +4,13 @@ import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { works } from "@/data/works";
-import { containerVariants, itemVariants, textRevealVariants } from "@/lib/animations";
+import { useOptimizedVariants } from "@/lib/animations";
 
 export default function MusicSection() {
   const t = useTranslations();
   const params = useParams();
   const locale = params.locale as string;
+  const { containerVariants, itemVariants, textRevealVariants } = useOptimizedVariants();
 
   return (
     <motion.section

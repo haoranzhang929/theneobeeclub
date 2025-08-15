@@ -61,12 +61,12 @@ h6,
 
 .animate-gradient {
   background-size: 200% 200%;
-  animation: gradient-move 8s ease-in-out infinite;
+  animation: gradient-move 12s ease-in-out infinite;
 }
 
 .animate-gradient-fast {
   background-size: 300% 300%;
-  animation: gradient-shift 4s ease-in-out infinite;
+  animation: gradient-shift 6s ease-in-out infinite;
 }
 
 /* Floating animations */
@@ -91,15 +91,15 @@ h6,
 }
 
 .animate-float {
-  animation: float 4s ease-in-out infinite;
+  animation: float 6s ease-in-out infinite;
 }
 
 .animate-float-slow {
-  animation: float 7s ease-in-out infinite;
+  animation: float 10s ease-in-out infinite;
 }
 
 .animate-float-reverse {
-  animation: float-reverse 5s ease-in-out infinite;
+  animation: float-reverse 8s ease-in-out infinite;
 }
 
 /* Pulse and glow effects */
@@ -114,7 +114,7 @@ h6,
 }
 
 .animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
+  animation: pulse-glow 3s ease-in-out infinite;
 }
 
 /* Shimmer text effect */
@@ -260,6 +260,32 @@ h6,
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;
+}
+
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+/* Optimize animations for better performance */
+.animate-gradient,
+.animate-float,
+.animate-pulse-glow {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Custom scrollbar */

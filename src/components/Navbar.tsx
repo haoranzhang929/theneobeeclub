@@ -50,7 +50,7 @@ const Navbar = () => {
                 animate={{
                   backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
                 }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                 style={{ backgroundSize: "300% 300%" }}
               >
                 {t("brand")}

@@ -105,10 +105,10 @@ const ArtistCard = ({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className="bg-gray-900 rounded-2xl overflow-hidden shadow-2xl cursor-pointer transition-all duration-300 hover:shadow-purple-500/20 hover:-translate-y-2"
