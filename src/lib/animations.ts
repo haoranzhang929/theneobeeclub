@@ -17,7 +17,7 @@ export const itemVariants = {
     y: 0,
     opacity: 1,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       damping: 15,
       stiffness: 80
     }
@@ -31,7 +31,7 @@ export const textRevealVariants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: "easeOut"
+      ease: [0.17, 0.67, 0.83, 0.67] as const
     }
   }
 };
@@ -42,7 +42,7 @@ export const fadeInVariants = {
     opacity: 1,
     transition: {
       duration: 0.6,
-      ease: "easeOut"
+      ease: [0.17, 0.67, 0.83, 0.67] as const
     }
   }
 };
@@ -54,7 +54,7 @@ export const slideUpVariants = {
     opacity: 1,
     transition: {
       duration: 0.6,
-      ease: "easeOut"
+      ease: [0.17, 0.67, 0.83, 0.67] as const
     }
   }
 };
