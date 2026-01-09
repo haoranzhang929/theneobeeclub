@@ -39,7 +39,7 @@ export default function ArtistsSection() {
           }`}
           variants={containerVariants}
         >
-          {artists.map((artist) => (
+          {artists.map((artist, index) => (
             <motion.div key={artist.id} variants={itemVariants}>
               <ArtistCard
                 name={artist.name}
@@ -53,6 +53,7 @@ export default function ArtistsSection() {
                 soundcloud={artist.social.soundcloud}
                 twitter={artist.social.twitter}
                 xiaohongshu={artist.social.xiaohongshu}
+                priority={index < 3}
               />
             </motion.div>
           ))}

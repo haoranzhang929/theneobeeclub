@@ -17,6 +17,7 @@ interface ArtistCardProps {
   twitter?: string;
   xiaohongshu?: string;
   imageUrl: string;
+  priority?: boolean;
 }
 
 const ArtistCard = ({
@@ -30,7 +31,8 @@ const ArtistCard = ({
   soundcloud,
   twitter,
   xiaohongshu,
-  imageUrl
+  imageUrl,
+  priority = false
 }: ArtistCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [imageError, setImageError] = useState(false);
@@ -117,22 +119,22 @@ const ArtistCard = ({
     >
       <div className="relative h-80 overflow-hidden rounded-t-2xl">
         {!imageError ? (
-          <div className="relative w-full h-full transition-transform duration-300 hover:scale-105">
-            <picture>
+          <>
+            <picture className="relative block w-full h-full">
               <source srcSet={imageUrl.replace(".jpg", ".webp")} type="image/webp" />
               <Image
                 src={imageUrl}
                 alt={name}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-300 hover:scale-105"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 onError={() => setImageError(true)}
-                priority={false}
+                priority={priority}
               />
             </picture>
             {/* Simple static overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent" />
-          </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent pointer-events-none" />
+          </>
         ) : (
           // Fallback gradient placeholder
           <div
