@@ -161,11 +161,7 @@ const ArtistCard = ({
 
         <p className="text-gray-400 text-lg mb-2">{role}</p>
 
-        <div className="min-h-[1.5rem] mb-4">
-          {bio && (
-            <p className="text-gray-500 text-sm italic">{bio}</p>
-          )}
-        </div>
+        <div className="min-h-[1.5rem] mb-4">{bio && <p className="text-gray-500 text-sm italic">{bio}</p>}</div>
 
         <div
           className={`mt-auto flex space-x-6 transition-all duration-300 ${
