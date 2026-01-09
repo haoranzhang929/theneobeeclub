@@ -44,6 +44,7 @@ export default function ArtistsSection() {
               <ArtistCard
                 name={artist.name}
                 role={t(artist.roleKey)}
+                bio={artist.bioKey ? t(artist.bioKey) : undefined}
                 spotify={artist.social.spotify}
                 youtube={artist.social.youtube}
                 bilibili={artist.social.bilibili}

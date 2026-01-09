@@ -8,6 +8,7 @@ import { useState } from "react";
 interface ArtistCardProps {
   name: string;
   role: string;
+  bio?: string;
   spotify?: string;
   youtube?: string;
   bilibili?: string;
@@ -21,6 +22,7 @@ interface ArtistCardProps {
 const ArtistCard = ({
   name,
   role,
+  bio,
   spotify,
   youtube,
   bilibili,
@@ -111,7 +113,7 @@ const ArtistCard = ({
       transition={{ duration: 0.4, ease: "easeOut" }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="bg-gray-900 rounded-2xl overflow-hidden shadow-2xl cursor-pointer transition-all duration-300 hover:shadow-purple-500/20 hover:-translate-y-2"
+      className="bg-gray-900 rounded-2xl overflow-hidden shadow-2xl cursor-pointer transition-all duration-300 hover:shadow-purple-500/20 hover:-translate-y-2 flex flex-col h-full"
     >
       <div className="relative h-80 overflow-hidden rounded-t-2xl">
         {!imageError ? (
@@ -152,15 +154,21 @@ const ArtistCard = ({
         )}
       </div>
 
-      <div className="p-8">
+      <div className="p-8 flex flex-col flex-grow">
         <h3 className="text-2xl font-bold mb-3 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
           {name}
         </h3>
 
-        <p className="text-gray-400 mb-6 text-lg">{role}</p>
+        <p className="text-gray-400 text-lg mb-2">{role}</p>
+
+        <div className="min-h-[1.5rem] mb-4">
+          {bio && (
+            <p className="text-gray-500 text-sm italic">{bio}</p>
+          )}
+        </div>
 
         <div
-          className={`flex space-x-6 transition-all duration-300 ${
+          className={`mt-auto flex space-x-6 transition-all duration-300 ${
             isHovered ? "opacity-100 translate-y-0" : "opacity-100 translate-y-0 md:opacity-0 md:translate-y-4"
           }`}
         >

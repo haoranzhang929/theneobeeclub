@@ -2,6 +2,7 @@ export interface Artist {
   id: string;
   name: string;
   roleKey: string; // Translation key for role
+  bioKey?: string; // Optional translation key for bio/description
   imageUrl: string;
   social: {
     spotify?: string;
@@ -19,6 +20,7 @@ export const artists: Artist[] = [
     id: "haosc",
     name: "HAØSC",
     roleKey: "artists.haosc_role",
+    bioKey: "artists.haosc_bio",
     imageUrl: "/haosc.webp",
     social: {
       spotify: "https://open.spotify.com/artist/0ASsfvcyv6P3TVLEYLurds",
