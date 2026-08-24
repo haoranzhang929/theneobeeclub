@@ -2,6 +2,26 @@ export type SiteLocale = "en" | "zh";
 
 type LocalizedText = Record<SiteLocale, string>;
 
+export interface Session {
+  id: string;
+  number: string;
+  title: string;
+  description: LocalizedText;
+  image: string;
+  youtube: string;
+  year: string;
+  uploadDate: string;
+  duration: string;
+  durationSeconds: number;
+  recordedDate?: string;
+  performer?: string;
+  venue?: {
+    name: string;
+    url: string;
+    location: LocalizedText;
+  };
+}
+
 export const locales: SiteLocale[] = ["en", "zh"];
 
 export function isSiteLocale(locale: string): locale is SiteLocale {
@@ -36,10 +56,10 @@ export const siteCopy = {
         "Curated sounds, distinctive spaces, and cross-cultural experiences from Dublin.",
       clubCta: "Explore NeoBee Club",
       studioCta: "Explore NeoBee Studio",
-      featureEyebrow: "Featured session · 002",
-      featureTitle: "A room, a guitar, a shared pulse.",
+      featureEyebrow: "New session · 003 · NeoBee Club × YiBU",
+      featureTitle: "Asia After Dusk.",
       featureBody:
-        "A warm, fluid session where house music meets live improvisation—recorded as a shared moment, not a perfect performance.",
+        "Recorded in daylight at YiBU, imagined for after dark. HAOSC moves through Mandarin pop, Y2K R&B, house, jazz, and contemporary Asian sounds.",
       branchesEyebrow: "One ecosystem, two practices",
       branchesTitle: "Built between the room and the image.",
       clubTitle: "NeoBee Club",
@@ -181,10 +201,10 @@ export const siteCopy = {
       intro: "我们从都柏林出发，做音乐、拍影像，也让不同文化在现场相遇。",
       clubCta: "了解 NeoBee Club",
       studioCta: "了解 NeoBee Studio",
-      featureEyebrow: "精选 Session · 002",
-      featureTitle: "一间房，一把吉他，共享的律动。",
+      featureEyebrow: "最新 Session · 003 · NeoBee Club × YiBU",
+      featureTitle: "录于白昼，献给入夜之后。",
       featureBody:
-        "House 音乐和现场吉他即兴在同一间房里展开。我们想留下的是大家一起进入音乐的那一刻，而不是一场完美无误的演出。",
+        "HAOSC 在 YiBU 录制的现场 DJ Set，从华语流行、Y2K R&B、House 与 Jazz 出发，连接熟悉的人声、电子节奏与当代亚洲声音。",
       branchesEyebrow: "一个生态，两种实践",
       branchesTitle: "发生在现场，也延伸到影像。",
       clubTitle: "NeoBee Club",
@@ -286,6 +306,31 @@ export const siteCopy = {
 
 export const sessions = [
   {
+    id: "session-003",
+    number: "003",
+    title: "Asia After Dusk",
+    description: {
+      en: "Recorded in daylight at YiBU, imagined for after dark. HAOSC moves through Mandarin pop, Y2K R&B, house, jazz, and contemporary Asian sounds.",
+      zh: "录于 YiBU 的白昼，献给入夜之后。HAOSC 从华语流行、Y2K R&B、House 与 Jazz 出发，连接熟悉的人声、电子节奏与当代亚洲声音。"
+    },
+    image: "/session-asia-after-dusk-yibu.webp",
+    youtube: "https://www.youtube.com/watch?v=mZh-MQnZiB4",
+    year: "2026",
+    uploadDate: "2026-08-23",
+    recordedDate: "2026-08-24",
+    duration: "1:28:35",
+    durationSeconds: 5315,
+    performer: "HAOSC",
+    venue: {
+      name: "YiBU",
+      url: "https://yibu.ie/",
+      location: {
+        en: "Dublin",
+        zh: "都柏林"
+      }
+    }
+  },
+  {
     id: "session-002",
     number: "002",
     title: "Jazzy House with Live Guitar",
@@ -315,7 +360,7 @@ export const sessions = [
     duration: "37:00",
     durationSeconds: 2220
   }
-] as const;
+] satisfies readonly Session[];
 
 export const experiences = [
   {

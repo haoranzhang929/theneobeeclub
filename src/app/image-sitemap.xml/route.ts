@@ -19,7 +19,7 @@ export async function GET() {
     <image:image>
       <image:loc>${baseUrl}${session.image}</image:loc>
       <image:title>${escapeXml(session.title)}</image:title>
-      <image:caption>The NeoBee Club Session ${session.number}, recorded in Dublin.</image:caption>
+      <image:caption>The NeoBee Club Session ${session.number}, recorded${session.venue ? ` at ${escapeXml(session.venue.name)}` : ""} in Dublin.</image:caption>
     </image:image>`).join("");
 
   const experienceImages = experiences.map((experience) => `

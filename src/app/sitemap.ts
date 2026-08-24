@@ -13,11 +13,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }, new Date("2024-01-01"));
 
   const pages = ["", "/club", "/studio", "/archive", "/about", "/contact"];
+  const contentDrivenPages = new Set(["", "/club", "/studio", "/archive"]);
 
   return (["en", "zh"] as const).flatMap((locale) =>
     pages.map((path) => ({
       url: `${baseUrl}/${locale}${path}`,
-      lastModified: path === "/archive" ? latestContentDate : new Date("2026-07-22"),
+      lastModified: contentDrivenPages.has(path) ? latestContentDate : new Date("2026-07-22"),
       changeFrequency: path === "" ? "weekly" as const : "monthly" as const,
       priority: path === "" ? 1 : path === "/archive" ? 0.9 : 0.8,
       alternates: {
