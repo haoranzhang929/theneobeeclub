@@ -5,12 +5,14 @@ export default function SessionCard({
   session,
   locale,
   featured = false,
-  priority = false
+  priority = false,
+  showDetails = true
 }: {
   session: Session;
   locale: SiteLocale;
   featured?: boolean;
   priority?: boolean;
+  showDetails?: boolean;
 }) {
   return (
     <article className={`session-card ${featured ? "session-card--featured" : ""}`}>
@@ -37,8 +39,12 @@ export default function SessionCard({
           <span>{session.year} · {session.duration}</span>
         </span>
       </div>
-      <h3>{session.title}</h3>
-      <p>{session.description[locale]}</p>
+      {showDetails && (
+        <>
+          <h3>{session.title}</h3>
+          <p>{session.description[locale]}</p>
+        </>
+      )}
     </article>
   );
 }

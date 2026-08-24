@@ -647,15 +647,60 @@ html[lang="zh"] h3 {
   gap: clamp(36px, 5vw, 80px) clamp(24px, 4vw, 64px);
 }
 
-.sessions-section--home > .session-card--featured {
-  margin-bottom: clamp(88px, 10vw, 150px);
+.home-feature-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(360px, 0.95fr);
+  column-gap: clamp(30px, 6vw, 90px);
+  align-items: start;
+  margin-bottom: clamp(72px, 6vw, 96px);
+}
+
+.home-feature-layout > .session-card--featured {
+  display: block;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.home-feature-layout .session-card--featured .session-card__meta {
+  margin-top: 16px;
+}
+
+.home-feature-heading {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+  padding-top: clamp(36px, 4vw, 64px);
+  margin-bottom: 0;
+}
+
+.home-feature-heading h2 {
+  margin-bottom: clamp(22px, 2.2vw, 32px);
+}
+
+.home-feature-heading > p:last-child {
+  margin-bottom: 0;
+}
+
+.feature-title-phrases {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.feature-title-phrases > span {
+  white-space: nowrap;
+}
+
+html[lang="zh"] .home-feature-heading h2 {
+  font-size: clamp(3.4rem, 4.6vw, 4.4rem);
+  line-height: 1.12;
 }
 
 .home-session-archive {
   display: grid;
   grid-template-columns: minmax(280px, 0.7fr) minmax(0, 1.3fr);
   gap: clamp(48px, 8vw, 128px);
-  padding-top: clamp(52px, 6vw, 90px);
+  padding-top: clamp(48px, 4vw, 64px);
   border-top: 1px solid var(--line);
 }
 
@@ -1537,6 +1582,21 @@ html[lang="zh"] h3 {
     margin-top: 16px;
   }
 
+  .home-feature-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+  }
+
+  .home-feature-heading {
+    padding-top: 0;
+  }
+
+  .home-feature-heading,
+  .home-feature-layout > .session-card--featured {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
   .experience-section {
     grid-template-columns: 0.18fr 1fr;
   }
@@ -1824,13 +1884,13 @@ html[lang="zh"] h3 {
     min-width: 0;
   }
 
-  .sessions-section--home > .session-card--featured {
-    margin-bottom: 58px;
+  .home-feature-layout {
+    margin-bottom: 48px;
   }
 
   .home-session-archive {
     gap: 38px;
-    padding-top: 48px;
+    padding-top: 40px;
   }
 
   .home-session-archive__intro h2 {
@@ -1900,14 +1960,8 @@ html[lang="zh"] h3 {
     max-width: 100%;
   }
 
-  .feature-title-phrases {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-  }
-
-  .feature-title-phrases > span {
-    white-space: nowrap;
+  html[lang="zh"] .home-feature-heading h2 {
+    font-size: clamp(2.5rem, 11.6vw, 3rem);
   }
 
   .section-heading h2,

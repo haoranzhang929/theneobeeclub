@@ -114,8 +114,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       </section>
 
       <section className="sessions-section sessions-section--home section-pad" id="sessions">
-        <div className="section-heading section-heading--split home-feature-heading">
-          <div>
+        <div className="home-feature-layout">
+          <div className="section-heading home-feature-heading">
             <p className="eyebrow">{copy.home.featureEyebrow}</p>
             <h2 className={locale === "zh" ? "feature-title-phrases" : undefined}>
               {locale === "zh"
@@ -124,10 +124,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                   ))
                 : copy.home.featureTitle}
             </h2>
+            <p>{copy.home.featureBody}</p>
           </div>
-          <p>{copy.home.featureBody}</p>
+          <SessionCard session={sessions[0]} locale={locale} featured showDetails={false} />
         </div>
-        <SessionCard session={sessions[0]} locale={locale} featured />
 
         <div className="home-session-archive">
           <div className="home-session-archive__intro">
